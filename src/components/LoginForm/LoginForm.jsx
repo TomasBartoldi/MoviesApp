@@ -1,9 +1,40 @@
 import React from 'react'
+import swAlert from '@sweetalert/with-react'
+import axios from 'axios'
 
-const Login = () => {
+const Login = () => {    
 
-    const submitHandler = () => {
-        console.log('Hola soy el form')
+    const submitHandler = e => { 
+
+        e.preventDefault();
+        
+        const email = e.target.email.value
+        const password= e.target.password.value
+
+        const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ 
+        
+        if(email === '' || password === ''){
+            return swAlert('Fields couldnt be empty');
+            
+        }
+
+        if(email !== '' && !regexEmail.test(email)){
+           return swAlert('Please enter a valid email');
+        }
+
+        if(email !== 'challenge@alkemy.org' || password !== 'react'){
+           return swAlert('Invalid credentials')
+        } 
+        
+        swAlert('Bienvenido')
+
+        axios
+           .post('http://challenge-react.alkemy.org', { email, password })
+           .then(res => {
+               const token = res.data.token;
+           })
+
+
     }
 
   return (
@@ -13,7 +44,7 @@ const Login = () => {
             <label>
                 <span>Email:</span>
                 <br />
-                <input type='email' name='email' />
+                <input type='text' name='email' />
             </label>
             <br />
             <label>
