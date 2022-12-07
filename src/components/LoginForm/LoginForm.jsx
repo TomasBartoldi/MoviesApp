@@ -1,17 +1,21 @@
-import React from 'react'
-import swAlert from '@sweetalert/with-react'
-import axios from 'axios'
+import React from 'react';
+import swAlert from '@sweetalert/with-react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {    
+
+    const navigate = useNavigate();
+    
 
     const submitHandler = e => { 
 
         e.preventDefault();
         
-        const email = e.target.email.value
-        const password= e.target.password.value
+        const email = e.target.email.value;
+        const password= e.target.password.value;
 
-        const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ 
+        const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;
         
         if(email === '' || password === ''){
             return swAlert(<h2>Fields couldnt be empty</h2>);
@@ -23,17 +27,18 @@ const Login = () => {
         }
 
         if(email !== 'challenge@alkemy.org' || password !== 'react'){
-           return swAlert(<h2>Invalid credentials</h2>)
+           return swAlert(<h2>Invalid credentials</h2>);
         } 
         
-        swAlert(<h2>Bienvenido</h2>)
+        swAlert(<h2>Bienvenido</h2>);
 
         axios
            .post('http://challenge-react.alkemy.org', { email, password })
            .then(res => {
                const token = res.data.token;
-               localStorage.setItem('token', token)
-               localStorage.setItem('name', 'tomas bartoldi')
+               localStorage.setItem('token', token);
+               localStorage.setItem('name', 'tomas bartoldi');
+               navigate('/home')
            })
 
         
