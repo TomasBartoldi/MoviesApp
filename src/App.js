@@ -1,11 +1,13 @@
 import React from "react";
-import LoginForm from './components/LoginForm/LoginForm'
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from './pages/Login'
+
 function App() {
 
   return (
-    <div className="App">
-        <LoginForm />
-    </div>
+     <Routes>
+        <Route exact path='/' element={<Login />} />
+     </Routes>
   );
 }
 

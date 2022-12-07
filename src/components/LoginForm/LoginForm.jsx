@@ -14,27 +14,29 @@ const Login = () => {
         const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ 
         
         if(email === '' || password === ''){
-            return swAlert('Fields couldnt be empty');
+            return swAlert(<h2>Fields couldnt be empty</h2>);
             
         }
 
         if(email !== '' && !regexEmail.test(email)){
-           return swAlert('Please enter a valid email');
+           return swAlert(<h2>Please enter a valid email</h2>);
         }
 
         if(email !== 'challenge@alkemy.org' || password !== 'react'){
-           return swAlert('Invalid credentials')
+           return swAlert(<h2>Invalid credentials</h2>)
         } 
         
-        swAlert('Bienvenido')
+        swAlert(<h2>Bienvenido</h2>)
 
         axios
            .post('http://challenge-react.alkemy.org', { email, password })
            .then(res => {
                const token = res.data.token;
+               localStorage.setItem('token', token)
+               localStorage.setItem('name', 'tomas bartoldi')
            })
 
-
+        
     }
 
   return (
