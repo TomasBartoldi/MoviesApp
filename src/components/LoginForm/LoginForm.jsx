@@ -45,22 +45,37 @@ const Login = () => {
     }
 
   return (
-    <div>
-        <h2>LOGIN:</h2>
-        <form onSubmit={submitHandler}>
+    <div className='flex flex-col items-center justify-center box-border h-72 w-96 bg-gray-900 rounded-lg shadow-lg'>
+        
+        <div className='w-full h-1/5 flex justify-center'>
+        <h2 className='text-slate-50 text-xl'>Sign in</h2>
+        </div>
+
+        <form 
+        className='space-y-6'
+        onSubmit={submitHandler}>
             <label>
-                <span>Email:</span>
+                <span className='text-slate-50'>Email:</span>
                 <br />
-                <input type='text' name='email' />
+                <input
+                className='w-64 rounded'
+                type='text' 
+                name='email' />
             </label>
             <br />
             <label>
-               <span>Password:</span>
+               <span className='text-slate-50'>Password:</span>
                <br />
-               <input type='password' name='password' />
+               <input 
+               className='w-64 rounded'
+               type='password' 
+               name='password' />
             </label>
             <br />
-            <button type='submit'>Start</button>
+            <button
+            className='bg-red-800 w-64 rounded text-slate-50' 
+            type='submit'
+            >LOGIN</button>
         </form>   
     </div>
   )
