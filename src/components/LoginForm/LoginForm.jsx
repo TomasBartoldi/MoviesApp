@@ -1,7 +1,7 @@
 import React from 'react';
 import swAlert from '@sweetalert/with-react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 const Login = () => {    
 
@@ -44,7 +44,11 @@ const Login = () => {
         
     }
 
+    let token = localStorage.getItem('token');
+
   return (
+    <>
+    { token && <Navigate to='/home' />}
     <div className='flex flex-col items-center justify-center box-border h-72 w-96 bg-gray-900 rounded-lg shadow-lg'>
         
         <div className='w-full h-1/5 flex justify-center'>
@@ -78,6 +82,7 @@ const Login = () => {
             >LOGIN</button>
         </form>   
     </div>
+    </>
   )
 }
 

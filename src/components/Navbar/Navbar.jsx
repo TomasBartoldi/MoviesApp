@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
     
-      <nav className='w-screen h-12 bg-gray-900 m-0 p-0'>
-        <ul className='w-screen h-full flex flex-row items-center justify-start ml-8 text-white'>
+      <nav className='w-screen h-12 bg-gray-900 m-0 p-0 flex flex-row items-center'>
+        <h1 className='text-white ml-10 font-bold'>AlkeFlix</h1>
+        <ul className='w-screen h-full flex flex-row items-center justify-start ml-8 text-gray-400'>
             <Link to='/home'>
             <li className='mr-10'>Home</li>
             </Link>

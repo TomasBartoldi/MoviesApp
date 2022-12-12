@@ -1,20 +1,23 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from 'react'
+import { Navigate } from 'react-router-dom';
+import Card from '../Card/Card'
 
 const Listado = () => {
 
-   const navigate = useNavigate();
- 
-   useEffect(() => {  
-       const token = localStorage.getItem('token')
-       if(token === null){
-           navigate('/')
-       }
-   }, [])
-
+   let token = localStorage.getItem('token');
 
   return (
-    <div>Soy Listado</div>
+    <>
+    { !token && <Navigate to='/' />}
+    <div className='w-screen h-full p-10 border border-solid border-gray-900 grid grid-cols-3 justify-center justify-items-center gap-y-10'>
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    </div>
+    </>
   )
 }
 
