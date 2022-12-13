@@ -1,13 +1,13 @@
 import React from 'react'
-import Listado from '../components/Listado/Listado'
+import Cards from '../components/Cards/Cards'
 import Navbar from '../components/Navbar/Navbar'
 import Footer from '../components/Footer/Footer'
 
 const Home = () => {
   return (
-    <div className='m-0 p-0'>
+    <div className='m-0 p-0 w-full bg-red-900'>
       <Navbar />
-      <Listado />
+      <Cards />
       <Footer />
     </div>
   )

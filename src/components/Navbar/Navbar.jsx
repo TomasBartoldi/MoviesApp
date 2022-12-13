@@ -8,10 +8,10 @@ const Navbar = () => {
         <h1 className='text-white ml-10 font-bold'>AlkeFlix</h1>
         <ul className='w-screen h-full flex flex-row items-center justify-start ml-8 text-gray-400'>
             <Link to='/home'>
-            <li className='mr-10'>Home</li>
+            <li className='mr-10 hover:text-white'>Home</li>
             </Link>
-            <Link to='/'>
-            <li>Login</li>
+            <Link to='/favorites'>
+            <li className='hover:text-white'>Favorites</li>
             </Link>
         </ul>
       </nav>    
