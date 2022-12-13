@@ -36,15 +36,14 @@ const Login = () => {
            .post('http://challenge-react.alkemy.org', { email, password })
            .then(res => {
                const token = res.data.token;
-               localStorage.setItem('token', token);
-               localStorage.setItem('name', 'tomas bartoldi');
+               sessionStorage.setItem('token', token);
                navigate('/home')
            })
 
         
     }
 
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
 
   return (
     <>

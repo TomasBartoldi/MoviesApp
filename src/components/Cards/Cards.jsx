@@ -1,20 +1,25 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Navigate, Link } from 'react-router-dom';
+import swAlert from '@sweetalert/with-react'
 
 
 const Listado = () => {
 
-   let token = localStorage.getItem('token');
+   let token = sessionStorage.getItem('token');
 
    const [ moviesList, setMoviesList ] = useState([]);
 
    useEffect(() => {
     const endPoint = 'https://api.themoviedb.org/3/discover/movie?api_key=4cd4da36e9992cc7566064011568e75f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
-    axios.get(endPoint).then(response => {
-      const apiData = response.data
-      setMoviesList(apiData.results);
+    axios.get(endPoint)
+      .then(response => {
+        const apiData = response.data
+        setMoviesList(apiData.results);
     })
+      .catch(error => {
+        swAlert(<h1>There were errors, try again later</h1>)
+      })
    }, [setMoviesList])
 
   return (
@@ -38,7 +43,7 @@ const Listado = () => {
                 <br />
                 <p>{oneMovie.overview.substring(0, 100)}...</p>
                 
-                <Link to='/detail'>
+                <Link to={`/detail?movieID=${oneMovie.id}`}>
                   <div >
                     <button className='mt-20 p-2 w-auto rounded bg-gray-800 flex justify-center text-white hover:text-gray-200'>View detail</button>
                   </div>
