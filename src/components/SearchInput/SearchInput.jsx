@@ -1,10 +1,13 @@
 import React from 'react'
 import { FaSearch } from 'react-icons/fa'
 import swAlert from '@sweetalert/with-react';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const SearchInput = () => {
+
+    const navigate = useNavigate();
+
 
     const submitHandler = e => {
         e.preventDefault();
@@ -12,6 +15,9 @@ const SearchInput = () => {
 
         if(keyword.length === 0){
             swAlert(<h1>Please search something!!</h1>)
+        }else{
+            e.currentTarget.keyword.value = '';
+            navigate(`/results?keyword=${keyword}`)
         }
     }
 
