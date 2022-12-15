@@ -16,10 +16,11 @@ const MovieDetail = () => {
     useEffect(()=>{
         const endPoint = `https://api.themoviedb.org/3/movie/${movieID}?api_key=4cd4da36e9992cc7566064011568e75f&language=en-US`
         //console.log(endPoint);
-        axios.get(endPoint).then(response => {
-            const movieData = response.data;
-            setMovie(movieData);
-        })
+        axios
+            .get(endPoint).then(response => {
+                const movieData = response.data;
+                setMovie(movieData);
+            })
         .catch(error => {
             swAlert(<h1>There were errors, try again later</h1>)
         })

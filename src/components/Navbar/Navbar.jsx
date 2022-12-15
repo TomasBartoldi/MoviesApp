@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import LogoutButton from '../LogoutButton/LogoutButton'
 import SearchInput from '../SearchInput/SearchInput'
 
 const Navbar = () => {
@@ -15,7 +16,15 @@ const Navbar = () => {
             <li className='hover:text-white'>Favorites</li>
             </Link>
         </ul>
-        <SearchInput />
+        <div className='flex flex-row justify-around w-72'>
+          <div className='mr-10'>
+            <LogoutButton />
+          </div>
+          <div className='flex items-center justify-center mr-10'>
+            <SearchInput />
+          </div>
+
+        </div>
       </nav>    
     
   )
