@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar/Navbar'
 
 const Detail = () => {
   return (
-    <div>
+    <div className='bg-red-900'>
         <Navbar />
         <MovieDetail />
     </div>

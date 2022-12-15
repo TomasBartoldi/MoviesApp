@@ -6,7 +6,6 @@ import Detail from './pages/Detail'
 import Favorites from './pages/Favorites'
 
 
-
 function App() {
 
   return (

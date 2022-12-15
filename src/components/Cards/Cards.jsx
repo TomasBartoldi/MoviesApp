@@ -43,11 +43,11 @@ const Listado = () => {
                 <br />
                 <p>{oneMovie.overview.substring(0, 100)}...</p>
                 
-                <Link to={`/detail?movieID=${oneMovie.id}`}>
-                  <div >
-                    <button className='mt-20 p-2 w-auto rounded bg-gray-800 flex justify-center text-white hover:text-gray-200'>View detail</button>
-                  </div>
-                </Link>
+                  <div className='w-24'>
+                    <Link to={`/detail?movieID=${oneMovie.id}`}>
+                      <button className='mt-20 p-2 rounded bg-gray-800 flex justify-center text-white hover:text-gray-200'>View detail</button>
+                    </Link>                   
+                  </div>  
               </div>
             </div>
           </div> 
