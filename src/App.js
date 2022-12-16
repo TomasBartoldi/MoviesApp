@@ -9,10 +9,17 @@ import Results from './pages/Results'
 
 function App() {
 
+   const addOrRemoveFromFavs = e => {
+      const btn = e.target;
+      const parent = btn.parentElement;
+      const imgURL = parent.querySelector('img').getAttribute('src')
+      console.log(imgURL);
+   }
+
   return (
      <Routes>
         <Route exact path='/' element={<Login />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/home' element={<Home addOrRemoveFromFavs={addOrRemoveFromFavs} />} />
         <Route path='/detail' element={<Detail />} />
         <Route path='/favorites' element={<Favorites />} />
         <Route path='/results' element={<Results />} />

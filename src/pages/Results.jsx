@@ -4,6 +4,7 @@ import Footer from '../components/Footer/Footer'
 import MoviesResults from '../components/Results/MoviesResults'
 
 const Results = () => {
+  
   return (
     <div>
         <Navbar />

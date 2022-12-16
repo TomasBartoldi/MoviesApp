@@ -1,14 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { FaRegHeart, FaHeart } from 'react-icons/fa'
 import { Navigate, Link } from 'react-router-dom';
 import swAlert from '@sweetalert/with-react'
 
 
-const Listado = () => {
+const Listado = (props) => {
+
+  const addOrRemoveFromFavs = props.addOrRemoveFromFavs
 
    let token = sessionStorage.getItem('token');
 
    const [ moviesList, setMoviesList ] = useState([]);
+   const [click, setClick] = useState(false)
+   
+   const handleClick = (e) => {
+    addOrRemoveFromFavs(e)
+    setClick(!click)
+  }
 
    useEffect(() => {
     const endPoint = 'https://api.themoviedb.org/3/discover/movie?api_key=4cd4da36e9992cc7566064011568e75f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
@@ -43,10 +52,25 @@ const Listado = () => {
                 <br />
                 <p>{oneMovie.overview.substring(0, 100)}...</p>
                 
-                  <div className='w-24'>
-                    <Link to={`/detail?movieID=${oneMovie.id}`}>
-                      <button className='mt-20 p-2 rounded bg-gray-800 flex justify-center text-white hover:text-gray-200'>View detail</button>
-                    </Link>                   
+                  <div className='w-auto flex flex-row justify-between items-center'>
+                    <div>
+                      <Link to={`/detail?movieID=${oneMovie.id}`}>
+                        <button className='mt-20 p-2 rounded bg-gray-800 flex justify-center text-white hover:text-gray-200'>View detail</button>
+                      </Link>
+                    </div>     
+                    <div>
+                      <button className='mt-20' onClick={e => handleClick(e)}>
+                        {click ? (
+                        <FaHeart size={25} /> 
+                        ) 
+                       : 
+                       (
+                        <FaRegHeart size={25} />
+                        )} 
+                      </button>  
+                                    
+                    </div>
+
                   </div>  
               </div>
             </div>
