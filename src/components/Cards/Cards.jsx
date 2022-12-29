@@ -59,7 +59,7 @@ const Listado = (props) => {
                       </Link>
                     </div>     
                     <div>
-                      <button className='mt-20' onClick={e => handleClick(e)}>
+                      <button movie-data-id={oneMovie.id} className='mt-20' onClick={e => handleClick(e)}>
                         {click ? (
                         <FaHeart size={25} /> 
                         ) 

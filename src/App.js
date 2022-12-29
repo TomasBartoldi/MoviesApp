@@ -10,18 +10,28 @@ import Results from './pages/Results'
 function App() {
 
    const addOrRemoveFromFavs = e => {
-      /* const btn = e.target.parentElement;
-      const imgURL = btn.querySelector('img').getAttribute('src');
-      console.log(imgURL); */
+     
+      //const getBtn = document.getElementById('btn')
+      //const btn = getBtn.dataset.movieId
 
-      //const btn = e.target;
-      //console.log(`soy el boton ${btn}`);
-      const image = document.getElementById('image').getAttribute('src')
-      const title = document.getElementById('title')
-      const title2 = e.currentTarget.title.value
-      const overview = document.getElementById('overview')
+      const getBtn = e.currentTarget;
+      console.log(getBtn.dataset);
       
-      console.log('soy el titulo', title2);
+      
+      const image = document.getElementById('image').getAttribute('src')
+      const getTitle = document.getElementById('title')
+      const title = getTitle.innerText;
+      const getOverview = document.getElementById('overview')
+      const overview = getOverview.innerText;
+
+      const movieData = {
+         image,
+         title,
+         overview,
+         id: getBtn.dataset.movieId
+      }
+
+      console.log(movieData)
    }
 
   return (
